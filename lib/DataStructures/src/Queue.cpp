@@ -39,7 +39,7 @@ void Queue<T>::push(T data) {
         head->next = new_node;
         head = new_node; 
     }
-    list_size++;
+    queue_size++;
 }
 
 template<typename T>

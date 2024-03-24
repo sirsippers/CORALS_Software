@@ -1,6 +1,6 @@
 /**
  ********************************************************************************
- * @file    TelecommunicationUtilities.hpp
+ * @file    Telecommunication_Utilities.hpp
  * @author  Logan Ruddick (Logan@Ruddicks.net)
  * @brief   Telecommunication Encoding/Decoding Utilities
  * @version 1.0

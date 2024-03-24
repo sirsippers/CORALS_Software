@@ -13,11 +13,11 @@
 #ifndef __STATE_MANAGER_HPP__
 #define __STATE_MANAGER_HPP__
 
-#include "StateManager_Configuration.hpp"
-#include "StateManager_Types.hpp"
+#include "List.hpp"
+#include "SM_Configuration.hpp"
+#include "SM_Types.hpp"
 #include "StateManager_Process.hpp"
 
-#include "List.hpp"
 
 #define S_TO_MS(s) (s * 1000)
 

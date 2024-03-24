@@ -55,8 +55,8 @@ class List {
 
         inline bool empty();
 
-        inline T& List<T>::operator[](ListSize_t index);
-        inline const T& List<T>::operator[](const ListSize_t index) const;
+        inline T& operator[](ListSize_t index);
+        inline const T& operator[](const ListSize_t index) const;
 
     private:
 

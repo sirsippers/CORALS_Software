@@ -13,9 +13,9 @@
 #include "StateManager.hpp"
 
 #include "List.hpp"
-#include "StateManager_Configuration.hpp"
+#include "SM_Configuration.hpp"
+#include "SM_Types.hpp"
 #include "StateManager_Process.hpp"
-#include "StateManager_Types.hpp"
 
 namespace StateManager {
 

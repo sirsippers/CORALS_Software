@@ -8,6 +8,10 @@
     },
     "frameworks": "arduino",
     "platforms": "*",
+    "headers": [
+        "include/StateManager.hpp",
+        "include/StateManager_Process.hpp"
+    ],
     "dependencies": {
         "name": "CORALS_DataStructures"
     },

@@ -13,8 +13,8 @@
 #include "StateManager_Process.hpp"
 
 #include "List.hpp"
-#include "StateManager_Configuration.hpp"
-#include "StateManager_Types.hpp"
+#include "SM_Configuration.hpp"
+#include "SM_Types.hpp"
 
 namespace StateManager {
 Process::Process() : index(0) {};

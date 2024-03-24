@@ -10,15 +10,14 @@
  ********************************************************************************
 **/
 
-#include "TelecommunicationUtilities.hpp"
+#include "Telecommunication_Utilities.hpp"
 
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "TelecommunicationLiterals.hpp"
-#include "TelecommunicationInterpreter.hpp"
-
+#include "Telecommunication_Literals.hpp"
+#include "Telecommunication_Types.hpp"
 namespace Telecommunication {
 
 uint32_t crc32(const uint8_t *data, uint32_t length) {
