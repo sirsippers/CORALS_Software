@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
-    "name": "CORALS_Core",
+    "name": "CORALS_StateManager",
     "description": "A simple state manager for Arduino projects with support for function and multi-function process callbacks.",
     "authors": {
         "name": "Logan Ruddick",
@@ -9,7 +9,7 @@
     "frameworks": "arduino",
     "platforms": "*",
     "headers": [
-        "CORALS.hpp"
+        "include/CORALS.hpp"
     ],
     "dependencies": {
         "name": "CORALS_StateManager"
