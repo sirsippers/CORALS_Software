@@ -117,17 +117,17 @@ template<typename T>
 inline T& List<T>::peek_back() { return this->back->data; }
 
 template<typename T>
-inline ListSize_t List<T>::size() { return this->list_size; }
+ListSize_t List<T>::size() { return this->list_size; }
 
 template<typename T>
-inline T& List<T>::operator[](ListSize_t index) {
+T& List<T>::operator[](ListSize_t index) {
     ListNode *ptr = front;
     for (ListSize_t i = 0; i < index; i++) ptr = ptr->next;
     return ptr->data;
 }
 
 template<typename T>
-inline const T& List<T>::operator[](const ListSize_t index) const {
+const T& List<T>::operator[](const ListSize_t index) const {
     ListNode *ptr = front;
     for (ListSize_t i = 0; i < index; i++) ptr = ptr->next;
     return ptr->data;

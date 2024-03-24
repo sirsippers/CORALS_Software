@@ -13,7 +13,8 @@
 #ifndef __STATEMANAGER_PROCESS_HPP__
 #define __STATEMANAGER_PROCESS_HPP__
 
-#include "List.hpp"
+#include <List.hpp>
+
 #include "SM_Configuration.hpp"
 #include "SM_Types.hpp"
 

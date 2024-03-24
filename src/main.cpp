@@ -1,19 +1,11 @@
 #include <Arduino.h>
-#include <StateManager.hpp>
 
-// put function declarations here:
-int myFunction(int, int);
+#include <CORALS.hpp>
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    ::CORALS::initialize();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
-
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+    ::CORALS::run();
 }

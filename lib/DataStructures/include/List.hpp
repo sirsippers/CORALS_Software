@@ -51,12 +51,12 @@ class List {
         inline T& peek_front();
         inline T& peek_back();
 
-        inline ListSize_t size();
+        ListSize_t size();
 
         inline bool empty();
 
-        inline T& operator[](ListSize_t index);
-        inline const T& operator[](const ListSize_t index) const;
+        T& operator[](ListSize_t index);
+        const T& operator[](const ListSize_t index) const;
 
     private:
 

@@ -8,7 +8,10 @@
     },
     "frameworks": "arduino",
     "platforms": "*",
-    "headers": "List.hpp",
+    "headers": [
+        "List.hpp",
+        "Queue.hpp"
+    ],
     "build": {
         "includeDir": "include",
         "srcDir": "src"

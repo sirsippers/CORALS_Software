@@ -9,11 +9,10 @@
     "frameworks": "arduino",
     "platforms": "*",
     "headers": [
-        "StateManager.hpp",
-        "StateManager_Process.hpp"
+        "include/CORALS.hpp"
     ],
     "dependencies": {
-        "name": "CORALS_DataStructures"
+        "name": "CORALS_StateManager"
     },
     "build": {
         "includeDir": "include",
