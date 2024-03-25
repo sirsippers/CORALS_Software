@@ -17,15 +17,5 @@
 
 // Serial USART Allocation
 #define DEBUG Serial
-#define HC05  Serial1
-
-// Module Names
-#define TELECOM CORALS_Telecommunication
-
-// Telecommunication Settings
-#define TELECOM_RECEIVE_BUFFER 256
-#define TELECOM_TRANSMIT_BUFFER 256
-#define TELECOM_CHECKSUM_LENGTH 19
-#define TELECOM_RAW_ECHO_MODE false
 
 #endif // __CORALS_CONFIGURATION_HPP__

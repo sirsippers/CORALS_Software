@@ -20,13 +20,13 @@
 #include "Telecommunication_Types.hpp"
 namespace Telecommunication {
 
-uint32_t crc32(const uint8_t *data, uint32_t length) {
-    uint32_t crc = 0xFFFFFFFF;
+Checksum crc32(const String data, StringSize length) {
+    Checksum crc = 0xFFFFFFFF;
 
-    for (uint32_t i = 0; i < length; ++i) {
+    for (StringSize i = 0; i < length; ++i) {
         crc ^= data[i];
         for (uint8_t j = 0; j < 8; j++) {
-            uint32_t mask = -(crc & 1);
+            Checksum mask = -(crc & 1);
             crc = (crc >> 1) ^ (0xEDB88320 & mask);
         }
     }
@@ -54,12 +54,12 @@ bool VerifyCommaDelimiter(char* &ptr) {
     return retval;
 }
 
-Command_t GetCommand(char* &ptr) {
-    Command_t retval = NO_COMMAND;
-    for (int i = 0; i < COMMAND_COUNT; i++) {
-        unsigned int length = strlen(CommandLiterals[i]);
+Command GetCommand(char* &ptr) {
+    Command retval = Command::NO_COMMAND;
+    for (int i = 0; i < (int)Command::COMMAND_COUNT; i++) {
+        StringSize length = strlen(CommandLiterals[i]);
         if (strncmp(ptr, CommandLiterals[i], length) == 0) {
-            retval = (Command_t)i;
+            retval = (Command)i;
             ptr += length;
             break;
         }
@@ -67,12 +67,12 @@ Command_t GetCommand(char* &ptr) {
     return retval;
 }
 
-Keyword_t GetKeyword(char* &ptr) {
-    Keyword_t retval = NO_KEYWORD;
-    for (int i = 0; i < KEYWORD_COUNT; i++) {
-        unsigned int length = strlen(KeywordParameters[i].literal);
+Keyword GetKeyword(char* &ptr) {
+    Keyword retval = Keyword::NO_KEYWORD;
+    for (int i = 0; i < (int)Keyword::KEYWORD_COUNT; i++) {
+        StringSize length = strlen(KeywordParameters[i].literal);
         if (strncmp(ptr, KeywordParameters[i].literal, length) == 0) {
-            retval = (Keyword_t)i;
+            retval = (Keyword)i;
             ptr += length;
             break;
         }

@@ -19,7 +19,27 @@ namespace Telecommunication {
 
 using Checksum = uint32_t;
 using String = char*;
-using StringSize = unsigned int;
+using StringSize = uint32_t;
+
+union Value { // Union Pointer Conjugate defined in Telecommunication_Literals.hpp
+    long int integer;
+    double decimal;
+    const char *string;
+};
+
+struct KeyValue {
+    Keyword keyword;
+    ParameterType type;
+    Value value;
+};
+
+struct TeleMessage {
+    Command command;
+    KeyValue *key_value_pairs;
+    uint8_t pair_count;
+    uint32_t checksum;
+    bool valid;
+};
 
 } // end namespace Telecommunication
 

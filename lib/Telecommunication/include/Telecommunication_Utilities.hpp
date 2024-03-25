@@ -13,24 +13,20 @@
 #ifndef __TELECOMMUNICATION_UTILITIES_HPP__
 #define __TELECOMMUNICATION_UTILITIES_HPP__
 
-#include <stdint.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "Telecommunication_Literals.hpp"
-#include "Telecommunication_Interpreter.hpp"
+#include "Telecommunication_Types.hpp"
 
 namespace Telecommunication {
 
-uint32_t crc32(const uint8_t *data, uint32_t length);
+Checksum crc32(String data, StringSize length);
 
 namespace Decoding {
 
-bool VerifyTarget(char* &ptr);
-bool VerifyDotDelimiter(char* &ptr);
-bool VerifyCommaDelimiter(char* &ptr);
-Command_t GetCommand(char* &ptr);
-Keyword_t GetKeyword(char* &ptr);
+bool VerifyTarget(String &ptr);
+bool VerifyDotDelimiter(String &ptr);
+bool VerifyCommaDelimiter(String &ptr);
+Command GetCommand(String &ptr);
+Keyword GetKeyword(String &ptr);
 
 } // namespace Decoding
 

@@ -152,7 +152,7 @@ enum class ParameterType {
     STRING,
 };
 
-union ValueData {
+union ValueData { // Union Pointer Conjugate defined in Telecommunication_Types.hpp
     void *any;
     long int *integer;
     double *decimal;
@@ -169,13 +169,14 @@ struct KeywordParameter {
 
 const String ON_LITERAL = "ON";
 const String OFF_LITERAL = "OFF";
+const String ON_OFF_SET[] = {ON_LITERAL, OFF_LITERAL};
+
 const String ACTIVE_LITERAL = "ACTIVE";
 const String INACTIVE_LITERAL = "INACTIVE";
+const String ACTIVE_INACTIVE_SET[] = {ACTIVE_LITERAL, INACTIVE_LITERAL};
+
 const String Q0_LITERAL = "Q0";
 const String Q4_LITERAL = "Q4";
-
-const String ON_OFF_SET[] = {ON_LITERAL, OFF_LITERAL};
-const String ACTIVE_INACTIVE_SET[] = {ACTIVE_LITERAL, INACTIVE_LITERAL};
 const String QUAT_FORMAT_SET[] = {Q0_LITERAL, Q4_LITERAL};
 
 double NORM_RANGE[] = {0.0, 1.0};
