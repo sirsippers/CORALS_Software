@@ -1,8 +1,8 @@
 /**
  ********************************************************************************
- * @file    GlobalConfiguration.hpp
+ * @file    CORALS_Configuration.hpp
  * @author  Logan Ruddick (Logan@Ruddicks.net)
- * @brief   Configuration for Arduino MEGA 2560
+ * @brief   CORALS Configuration for Arduino MEGA 2560
  * @version 1.0
  * @date    2024-03-20
  ********************************************************************************
@@ -10,8 +10,8 @@
  ********************************************************************************
 **/
 
-#ifndef __GLOBAL_CONFIGURATION_HPP__
-#define __GLOBAL_CONFIGURATION_HPP__
+#ifndef __CORALS_CONFIGURATION_HPP__
+#define __CORALS_CONFIGURATION_HPP__
 
 #include <Arduino.h>
 
@@ -28,4 +28,4 @@
 #define TELECOM_CHECKSUM_LENGTH 19
 #define TELECOM_RAW_ECHO_MODE false
 
-#endif // __GLOBAL_CONFIGURATION_HPP__
+#endif // __CORALS_CONFIGURATION_HPP__

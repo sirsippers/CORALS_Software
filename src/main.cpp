@@ -3,9 +3,9 @@
 #include <CORALS.hpp>
 
 void setup() {
-    ::CORALS::initialize();
+    CORALS::initialize();
 }
 
 void loop() {
-    ::CORALS::run();
+    CORALS::run();
 }

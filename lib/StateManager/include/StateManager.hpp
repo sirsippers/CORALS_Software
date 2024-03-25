@@ -13,7 +13,7 @@
 #ifndef __STATE_MANAGER_HPP__
 #define __STATE_MANAGER_HPP__
 
-#include <List.hpp>
+#include <List.tpp>
 
 #include "SM_Configuration.hpp"
 #include "SM_Types.hpp"

@@ -9,11 +9,10 @@
     "frameworks": "arduino",
     "platforms": "*",
     "headers": [
-        "List.hpp",
-        "Queue.hpp"
+        "List.tpp",
+        "Queue.tpp"
     ],
     "build": {
-        "includeDir": "include",
-        "srcDir": "src"
+        "includeDir": "."
     }
 }

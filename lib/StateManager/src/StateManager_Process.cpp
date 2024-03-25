@@ -12,7 +12,7 @@
 
 #include "StateManager_Process.hpp"
 
-#include <List.hpp>
+#include <List.tpp>
 
 #include "SM_Configuration.hpp"
 #include "SM_Types.hpp"
