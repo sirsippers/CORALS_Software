@@ -24,7 +24,7 @@ namespace {
 
 } // end namespace
 
-void intialize() {
+void initialize() {
     DEBUG.begin(115200);
 }
 
