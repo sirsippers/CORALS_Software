@@ -19,8 +19,8 @@
         "flags": [
             "-I Core/include",
             "-I Telecommunication/Telecommands/include",
-            "-I Telecommunication/Telemetry Requests/include",
-            "-I Telecommunication/Telemetry Responses/include"
+            "-I Telecommunication/Telemetry_Requests/include",
+            "-I Telecommunication/Telemetry_Responses/include"
         ],
         "srcDir": "."
     }
