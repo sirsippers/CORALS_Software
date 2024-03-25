@@ -13,8 +13,8 @@
 #ifndef __TELECOMMUNICATION_INTERPRETER_HPP__
 #define __TELECOMMUNICATION_INTERPRETER_HPP__
 
-#include <Queue.tpp>
-
+#include "Telecommunication.hpp"
+#include "Telecommunication_Configuration.hpp"
 #include "Telecommunication_Literals.hpp"
 #include "Telecommunication_Types.hpp"
 #include "Telecommunication_Utilities.hpp"
@@ -22,13 +22,16 @@
 namespace Telecommunication {
 
 class TelecommunicationInterpreter {
+    friend class TelecommunicationDelegator;
+
     public:
-        TelecommunicationInterpreter(const Command command, const Keyword *keywords, const unsigned int keyword_count);
+        TelecommunicationInterpreter(const Telecommunication *telecommunicator, const Command command, const Keyword *keywords, const unsigned int keyword_count);
         ~TelecommunicationInterpreter();
 
         virtual void Interpret(TeleMessage message) = 0;
 
-    private:
+    protected:
+        const Telecommunication *telecommunicator;
         const Command command;
         const Keyword *keywords;
         const unsigned int keyword_count;

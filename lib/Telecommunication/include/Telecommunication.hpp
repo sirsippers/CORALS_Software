@@ -24,6 +24,7 @@ class Telecommunication {
     using MessageQueue = DataStructures::Queue<String>;
 
     friend class TelecommunicationInterpreter;
+    friend class TelecommunicationDelegator;
     
     public:
         Telecommunication() : ReceiveBufferIndex(0) {};
@@ -32,10 +33,10 @@ class Telecommunication {
         void Receive(unsigned int count = 0);
         void Transmit(unsigned int count = 0);
     
+    private:
         TeleMessage GetReception();
         void SendTransmission(TeleMessage message);
-
-    private:
+        
         MessageQueue ReceiveQueue;
         MessageQueue TransmitQueue;
         

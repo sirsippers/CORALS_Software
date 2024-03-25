@@ -63,7 +63,12 @@ TeleMessage Telecommunication::GetReception() {
     TeleMessage retval;
 
     // Get Message from Queue
-    const String string = ReceiveQueue.pop();
+    String string = NULL;
+    ReceiveQueue.pop(string);
+    if (string == NULL) {
+        retval.valid = false;
+        return retval;
+    }
     String ptr = (String) string;
     StringSize length = strlen(string);
     Checksum expected_checksum = crc32(ptr, length-TELECOM_CHECKSUM_LENGTH);

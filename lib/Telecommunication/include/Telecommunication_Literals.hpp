@@ -67,7 +67,8 @@ enum class Command {
     TR_ERROR_STATE,
     // Other Values
     COMMAND_COUNT,
-    NO_COMMAND
+    NO_COMMAND,
+    RECEIVING_COMMAND_COUNT = Command::TR_REGISTER,
 };
 
 const String CommandLiterals[(int)Command::COMMAND_COUNT] = {

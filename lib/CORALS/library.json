@@ -17,7 +17,8 @@
     "build": {
         "includeDir": ".",
         "flags": [
-            "-I Core/include",
+            "-I Common/include",
+            "-I Telecommunication/Common/include",
             "-I Telecommunication/Telecommands/include",
             "-I Telecommunication/Telemetry_Requests/include",
             "-I Telecommunication/Telemetry_Responses/include"

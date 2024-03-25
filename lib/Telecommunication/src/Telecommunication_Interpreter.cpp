@@ -12,17 +12,17 @@
 
 #include "Telecommunication_Interpreter.hpp"
 
-#include <Queue.tpp>
 #include "Telecommunication_Literals.hpp"
 #include "Telecommunication_Types.hpp"
 #include "Telecommunication_Utilities.hpp"
 
 namespace Telecommunication {
 
-TelecommunicationInterpreter::TelecommunicationInterpreter(const Command command, 
+TelecommunicationInterpreter::TelecommunicationInterpreter(const Telecommunication *telecommunicator,
+                                                           const Command command, 
                                                            const Keyword *keywords, 
                                                            const unsigned int keyword_count)
-                              : command(command), keywords(keywords), keyword_count(keyword_count) {}
+    : telecommunicator(telecommunicator), command(command), keywords(keywords), keyword_count(keyword_count) {}
 
 TelecommunicationInterpreter::~TelecommunicationInterpreter() {}
 
