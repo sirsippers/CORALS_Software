@@ -11,9 +11,14 @@
     "headers": [
         "CORALS.hpp"
     ],
-    "dependencies": {
-        "name": "CORALS_StateManager"
-    },
+    "dependencies": [
+        {
+            "name": "CORALS_StateManager"
+        },
+        {
+            "name": "CORALS_Telecommunication"
+        }
+    ],
     "build": {
         "includeDir": ".",
         "flags": [

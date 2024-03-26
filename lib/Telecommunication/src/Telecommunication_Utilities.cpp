@@ -20,7 +20,19 @@
 #include "Telecommunication_Types.hpp"
 namespace Telecommunication {
 
-Checksum crc32(const String data, StringSize length) {
+CString GetCommandLiteral(Command command) {
+    return CommandLiterals[(int)command];
+}
+
+CString GetKeywordLiteral(Keyword keyword) {
+    return KeywordLiterals[(int)keyword];
+}
+
+KeywordParameter_t GetKeywordParameter(Keyword keyword) {
+    return KeywordParameters[(int)keyword];
+}
+
+Checksum crc32(CString data, StringSize length) {
     Checksum crc = 0xFFFFFFFF;
 
     for (StringSize i = 0; i < length; ++i) {
@@ -70,8 +82,8 @@ Command GetCommand(char* &ptr) {
 Keyword GetKeyword(char* &ptr) {
     Keyword retval = Keyword::NO_KEYWORD;
     for (int i = 0; i < (int)Keyword::KEYWORD_COUNT; i++) {
-        StringSize length = strlen(KeywordParameters[i].literal);
-        if (strncmp(ptr, KeywordParameters[i].literal, length) == 0) {
+        StringSize length = strlen(KeywordLiterals[i]);
+        if (strncmp(ptr, KeywordLiterals[i], length) == 0) {
             retval = (Keyword)i;
             ptr += length;
             break;

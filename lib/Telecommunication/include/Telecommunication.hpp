@@ -27,8 +27,8 @@ class Telecommunication {
     friend class TelecommunicationDelegator;
     
     public:
-        Telecommunication() : ReceiveBufferIndex(0) {};
-        ~Telecommunication() {};
+        Telecommunication();
+        ~Telecommunication();
         
         void Receive(unsigned int count = 0);
         void Transmit(unsigned int count = 0);

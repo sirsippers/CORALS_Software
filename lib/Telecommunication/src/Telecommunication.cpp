@@ -123,14 +123,16 @@ TeleMessage Telecommunication::GetReception() {
             return retval;
         }
 
-        const KeywordParameter keyword_parameter = KeywordParameters[(int)key_value.keyword];
+        const KeywordParameter keyword_parameter = GetKeywordParameter(key_value.keyword);
 
         // Get Value
         key_value.type = keyword_parameter.datatype;
-        char *tmp = ptr;
+        String tmp = ptr;
+        unsigned int i = 0;
+        Value value;
         switch (key_value.type) {
             case ParameterType::INTEGER:
-                long int integer = strtol(tmp, &ptr, 10);
+                value.integer = strtol(tmp, &ptr, 10);
                 if (tmp == ptr) {
                     retval.valid = false;
                     delete[] string;
@@ -138,10 +140,9 @@ TeleMessage Telecommunication::GetReception() {
                 }
                 switch (keyword_parameter.domain) {
                     case ParameterDomain::SET:
-                        unsigned int i = 0;
                         for (; i < keyword_parameter.length; i++) {
-                            if (integer == keyword_parameter.value.integer[i]) {
-                                key_value.value.integer = integer;
+                            if (value.integer == keyword_parameter.integer[i]) {
+                                key_value.value.integer = value.integer;
                                 break;
                             }
                         }
@@ -152,8 +153,8 @@ TeleMessage Telecommunication::GetReception() {
                         }
                         break;
                     case ParameterDomain::RANGE:
-                        if (integer >= keyword_parameter.value.integer[0] && integer <= keyword_parameter.value.integer[1]) {
-                            key_value.value.integer = integer;
+                        if (value.integer >= keyword_parameter.integer[0] && value.integer <= keyword_parameter.integer[1]) {
+                            key_value.value.integer = value.integer;
                         }
                         else {
                             retval.valid = false;
@@ -162,7 +163,7 @@ TeleMessage Telecommunication::GetReception() {
                         }
                         break;
                     case ParameterDomain::ANY:
-                        key_value.value.integer = integer;
+                        key_value.value.integer = value.integer;
                         break;
                     default:
                         retval.valid = false;
@@ -171,7 +172,7 @@ TeleMessage Telecommunication::GetReception() {
                 }
                 break;
             case ParameterType::DECIMAL:
-                double decimal = strtod(tmp, &ptr);
+                value.decimal = strtod(tmp, &ptr);
                 if (tmp == ptr) {
                     retval.valid = false;
                     delete[] string;
@@ -179,10 +180,9 @@ TeleMessage Telecommunication::GetReception() {
                 }
                 switch (keyword_parameter.domain) {
                     case ParameterDomain::SET:
-                        unsigned int i = 0;
                         for (; i < keyword_parameter.length; i++) {
-                            if (decimal == keyword_parameter.value.decimal[i]) {
-                                key_value.value.decimal = decimal;
+                            if (value.decimal == keyword_parameter.decimal[i]) {
+                                key_value.value.decimal = value.decimal;
                                 delete[] string;
                                 break;
                             }
@@ -194,8 +194,8 @@ TeleMessage Telecommunication::GetReception() {
                         }
                         break;
                     case ParameterDomain::RANGE:
-                        if (decimal >= keyword_parameter.value.decimal[0] && decimal <= keyword_parameter.value.decimal[1]) {
-                            key_value.value.decimal = decimal;
+                        if (value.decimal >= keyword_parameter.decimal[0] && value.decimal <= keyword_parameter.decimal[1]) {
+                            key_value.value.decimal = value.decimal;
                         }
                         else {
                             retval.valid = false;
@@ -204,7 +204,7 @@ TeleMessage Telecommunication::GetReception() {
                         }
                         break;
                     case ParameterDomain::ANY:
-                        key_value.value.decimal = decimal;
+                        key_value.value.decimal = value.decimal;
                         break;
                     default:
                         retval.valid = false;
@@ -215,10 +215,9 @@ TeleMessage Telecommunication::GetReception() {
             case ParameterType::STRING:
                 switch(keyword_parameter.domain) {
                     case ParameterDomain::SET:
-                        unsigned int i = 0;
                         for (; i < keyword_parameter.length; i++) {
-                            if (strncmp(ptr, keyword_parameter.value.string[i], strlen(keyword_parameter.value.string[i])) == 0) {
-                                key_value.value.string = keyword_parameter.value.string[i];
+                            if (strncmp(ptr, keyword_parameter.string[i], strlen(keyword_parameter.string[i])) == 0) {
+                                key_value.value.string = keyword_parameter.string[i];
                                 break;
                             }
                         }
@@ -290,32 +289,33 @@ void Telecommunication::SendTransmission(TeleMessage message) {
     ptr += COMMAND_DELIMITER_LENGTH;
 
     // Set Command
-    const String command = CommandLiterals[(int)message.command];
+    CString command = GetCommandLiteral(message.command);
     strncpy(ptr, command, strlen(command));
     ptr += strlen(command);
 
     // Set Key Value Pairs
     for (unsigned int i = 0; i < message.pair_count; i++) {
         const KeyValue key_value = message.key_value_pairs[i];
-        const KeywordParameter keyword_parameter = KeywordParameters[(int)key_value.keyword];
+        const KeywordParameter keyword_parameter = GetKeywordParameter(key_value.keyword);
 
         // Set Delimiter
         strncpy(ptr, KEYVALUE_DELIMITER, KEYVALUE_DELIMITER_LENGTH);
         ptr += KEYVALUE_DELIMITER_LENGTH;
 
         // Set Keyword
-        const String literal = keyword_parameter.literal;
+        CString literal = GetKeywordLiteral(key_value.keyword);
         strncpy(ptr, literal, strlen(literal));
         ptr += strlen(literal);
         *ptr++ = ' '; 
 
         // Set Value
+        int pre_decimal_length = 0;
         switch (keyword_parameter.datatype) {
             case ParameterType::INTEGER:
-                ptr += sprintf(ptr, "%d", key_value.value.integer);
+                ptr += sprintf(ptr, "%ld", key_value.value.integer);
                 break;
             case ParameterType::DECIMAL:
-                int pre_decimal_length = ceil(log10(key_value.value.decimal));
+                pre_decimal_length = ceil(log10(key_value.value.decimal));
                 dtostrf(key_value.value.decimal, pre_decimal_length + 7, 6, ptr);
                 ptr += pre_decimal_length + 7;
                 break;
@@ -336,7 +336,7 @@ void Telecommunication::SendTransmission(TeleMessage message) {
     ptr += COMMAND_DELIMITER_LENGTH;
 
     // Set Checksum
-    ptr += sprintf(ptr, "CRC32 0x%08X", checksum);
+    ptr += sprintf(ptr, "CRC32 0x%08lX", checksum);
 
     // Set End of String
     *ptr = '\0';

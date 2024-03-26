@@ -18,6 +18,10 @@
 
 namespace Telecommunication {
 
+CString GetCommandLiteral(Command command);
+CString GetKeywordLiteral(Keyword keyword);
+KeywordParameter_t GetKeywordParameter(Keyword keyword);
+
 Checksum crc32(String data, StringSize length);
 
 namespace Decoding {
